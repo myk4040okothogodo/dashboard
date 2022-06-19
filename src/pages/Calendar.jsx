@@ -51,8 +51,8 @@ const Scheduler = () => {
                   />
                 </td>
               </tr>
-            <tbody>
-            <table>
+            </tbody>
+            </table>
           </PropertyPane>
         </div>
     );

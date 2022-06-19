@@ -4,7 +4,7 @@ import { SparklineComponent, Inject, SparklineTooltip} from '@syncfusion/ej2-rea
 
 class SparkLine extends React.PureComponent {
     render(){
-        const {id, height, width, color, data, type, type, currentColor} = this.props;
+        const {id, height, width, color, data, type, currentColor} = this.props;
 
       return (
          <SparklineComponent

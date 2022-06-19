@@ -1,4 +1,4 @@
-import, {useEffect} React from "react";
+import React,{useEffect} from "react";
 import {BrowserRouter, Router, Route} from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -9,8 +9,10 @@ import { useStateContext } from './contexts/ContextProvider';
 
 const App = () =>{
     const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+
     return (
-        <div>
+        <div className={currentMode === 'Dark' ? 'dark' : ''}>
           <BrowserRouter>
             <div className="flex relative dark:bg-main-dark-bg">
              <div className="fixed right-4 bottom-4" style={{zIndex: "1000" }}>
@@ -31,12 +33,17 @@ const App = () =>{
                  </div>
              )}
              <div className= {
-               `dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`
+
+               activeMenu 
+               ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full'
+               : ' bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
+               
              }>
                <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
                  <Navbar />
                </div>
              <div>
+               {themeSettings && (<ThemeSettings />)}
                <Routes>
                  <Route path="/" element={< Ecommerce />} />
                  <Route path="/ecommerce" element={<Ecommerce />} />
@@ -59,8 +66,8 @@ const App = () =>{
                  <Route path="/pie"  element={<Pie/>} />
                  <Route path="/financial" element= {<Financial/>} />
                  <Route path="/color-mapping" element={<ColorMapping/>} />
-                 <Route path="/pyramid" element={Pyramid/>} />
-                 <Route path="/stacked" element={Stacked/>} />
+                 <Route path="/pyramid" element={<Pyramid/>} />
+                 <Route path="/stacked" element={<Stacked/>} />
                </Routes> 
              </div>
             <Footer />

@@ -10,7 +10,7 @@ const Bar = () => {
 
     return (
          <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
-           <ChartHeader category="Bar" title="Olympic Medal counts - RIO" />
+           <ChartsHeader category="Bar" title="Olympic Medal counts - RIO" />
            <div className="w-full">
              <ChartComponent 
               id = "charts"
@@ -23,7 +23,7 @@ const Bar = () => {
              >
              <Inject services ={[ColumnSeries, Legend, Tooltip, Category, DataLabel]} />
              <SeriesCollectionDirective>
-                {barCustomSeries.map((item, index) => <SeriesDirective key={index} {..item} />)}
+                {barCustomSeries.map((item, index) => <SeriesDirective key={index} {...item} />)}
              </SeriesCollectionDirective>
             </ChartComponent>
            </div>
